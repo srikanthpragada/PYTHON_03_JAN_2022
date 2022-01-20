@@ -1,7 +1,7 @@
-def wish(*names) -> None:
+def wish(*names, message='Hi') -> None:
     for n in names:
-        print('Hello', n)
+        print(message, n)
 
 
-wish("Anders", "Mark")
+wish("Anders", "Mark", message="Hello")
 wish("Tom", "Martin", "David")
