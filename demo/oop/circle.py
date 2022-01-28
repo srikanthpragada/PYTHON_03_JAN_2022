@@ -13,6 +13,11 @@ class Circle:
     def area(self):
         return math.pi * self.radius * self.radius
 
+    @property
+    def diameter(self):
+        return self.radius * 2
+
 
 c = Circle(10, 20, 5)  # Create object
 print(c.area())
+print(c.diameter)  # Property
