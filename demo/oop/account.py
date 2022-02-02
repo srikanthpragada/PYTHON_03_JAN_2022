@@ -1,3 +1,12 @@
+class FundsException(Exception):
+    def __init__(self, amount, balance):
+        self.amount = amount
+        self.balance = balance
+
+    def __str__(self):
+        return f"Available balance is {self.balance}, withdraw amount is {self.amount}"
+
+
 class SavingsAccount:
     # static or class attributes
     minbal = 10000
@@ -26,19 +35,20 @@ class SavingsAccount:
         if self.balance - SavingsAccount.minbal >= amount:
             self.balance -= amount
         else:
-            print("Insufficient Balance")
+            raise FundsException(amount, self.balance)
 
     def getbalance(self):
         return self.balance
 
 
-a = SavingsAccount.create(100,"Tom")
+a = SavingsAccount.create(100, "Tom")
 a.show()
 
 print(SavingsAccount.getminbal())  # call static method
 
 s = SavingsAccount(1, "Scott", 100000)
 s.deposit(10000)
+s.withdraw(200000)
 s.show()
 print(s.getbalance())
 
